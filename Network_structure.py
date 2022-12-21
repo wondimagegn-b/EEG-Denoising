@@ -1,7 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras import datasets, layers, models, Input, Sequential
 
-# Author: Haoming Zhang
 
 def fcNN(datanum):
   model = tf.keras.Sequential()
@@ -140,9 +139,9 @@ import torch
 
 
 
-class complex_CNN(nn.Module):
+class TwobythreeR_CNN(nn.Module):
     def __init__(self, batch_size, datanum):
-        super(complex_CNN, self).__init__()
+        super(TwobythreeR_CNN, self).__init__()
         self.batch_size = batch_size
         self.datanum = datanum
         self.net0 = nn.Sequential(
