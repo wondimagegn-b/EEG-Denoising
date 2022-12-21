@@ -2,7 +2,7 @@ import sklearn.model_selection as ms
 import numpy as np
 import scipy.io as sio
 import math
-# Author: Haoming Zhang
+
 #The code here not only include data importing, but also data standardization and the generation of analog noise signals
 
 def get_rms(records):

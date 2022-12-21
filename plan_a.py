@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import datasets, layers, models, Input, Sequential
 
-# Author: Haoming Zhang
+
 
 def fcNN(datanum):
   model = tf.keras.Sequential()
@@ -154,4 +154,22 @@ def Complex_CNN(datanum):
   model.build(input_shape=[ 1,datanum, 1] )
   model.summary()
   
+ def TwobythreeR_CNN(datanum):
+   model = Sequential()
+   model.add(layers.Conv1D(32 ,5,activation = 'relu',strides=1,padding="same",input_shape=[ datanum, 1]))
+   model.add(layers.Conv1D(32 ,5,activation = 'relu',strides=1,padding="same",input_shape=[ datanum, 1]))
+   model.add(layers.Dropout(0.3))
+
+   model.add(BasicBlockall())
+
+   model.add(layers.Conv1D(32 ,1,activation = 'relu',strides=1,padding="same"))
+   model.add(layers.Conv1D(32 ,1,activation = 'relu',strides=1,padding="same"))
+   model.add(layers.Dropout(0.3))
+
+   model.add(layers.Flatten())
+   model.add(layers.Dense(datanum))
+
+   model.build(input_shape=[ 1,datanum, 1] )
+   model.summary()
+   
   return model

@@ -12,7 +12,6 @@ from Network_structure import *
 from loss_function import *
 import os
 
-# Author: Haoming Zhang
 # Here is the main part of the denoising neurl network, We can adjust all the parameter in the user-defined area.
 #####################################################自定义 user-defined ########################################################
 
@@ -21,7 +20,7 @@ batch_size  = 10    # training batch size
 train_num = 3000   # how many trails for train
 test_num = 400     # how many trails for test
 combin_num = 10    # combin EEG and noise ? times
-denoise_network = 'Complex_CNN'    #   fcNN   &   Simple_CNN   &    Complex_CNN    &    RNN_lstm
+denoise_network = 'Complex_CNN'    #   fcNN   &   Simple_CNN   &    Complex_CNN    &    RNN_lstm & 2X3R-CNN
 result_location = r'C:\Users\PC\Desktop\books\4th 2nd sem\EEGdenoiseNet-master\code\benchmark_networks\NN_result'     #  Where to export network results
 foldername = 'EMG_RNN_last_10'            # the name of the target folder (should be change when we want to train a new network)
 
@@ -48,7 +47,7 @@ if not os.path.exists(result_location +'/'+  foldername):
 @tf.function
 def train_step(noiseEEG_batch,EEG_batch):
 
-  #本次训练参数初始化  parameter initialization in one step
+  
 
   mse_grads = 0
   m_loss = 0
@@ -81,7 +80,7 @@ def train_step(noiseEEG_batch,EEG_batch):
     #bp
     denoise_optimizer.apply_gradients(zip(mse_grads, denoiseNN.trainable_variables))
 
-  return  M_loss,  mse_grads[0]  #每一条EEG的loss从此输出
+  return  M_loss,  mse_grads[0]  
 
 
 
@@ -220,6 +219,8 @@ elif denoise_network == 'Complex_CNN':
 
 elif denoise_network == 'RNN_lstm':
   denoiseNN = RNN_lstm(datanum)
+  elif denoise_network == 'TwobythreeR_CNN'
+    denoiseNN = RNN_lstm(datanum)
 
 else: 
   print('NN name arror')

@@ -61,7 +61,7 @@ class BasicBlockall(layers.Layer):
     return out
 
 
-def Complex_CNN(datanum):
+def TwobythreeR_CNN(datanum):
   model = Sequential()
   model.add(layers.Conv1D(32 ,5,activation = 'relu',strides=1,padding="same",input_shape=[ datanum, 1]))
   model.add(layers.Conv1D(32 ,5,activation = 'relu',strides=1,padding="same",input_shape=[ datanum, 1]))
